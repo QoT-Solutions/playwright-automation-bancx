@@ -1,5 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 interface Config {
     baseUrl: string;
@@ -49,5 +53,32 @@ export class ConfigManager {
 
     static getInvalidCredentials() {
         return this.loadCredentials().invalidUser;
+    }
+}
+
+export const config = {
+    api: {
+        baseUrl: process.env.API_BASE_URL || 'https://api.bancx.com',
+        version: process.env.API_VERSION || '1.0'
+    },
+    oauth: {
+        clientId: process.env.OAUTH_CLIENT_ID || 'default-client-id',
+        clientSecret: process.env.OAUTH_CLIENT_SECRET || 'default-client-secret'
+    },
+    test: {
+        username: process.env.TEST_USERNAME || 'test-user',
+        password: process.env.TEST_PASSWORD || 'test-password'
+    }
+};
+
+// Validate required environment variables
+const requiredEnvVars = [
+    'OAUTH_CLIENT_ID',
+    'OAUTH_CLIENT_SECRET'
+];
+
+for (const envVar of requiredEnvVars) {
+    if (!process.env[envVar]) {
+        console.warn(`Warning: ${envVar} is not set in environment variables`);
     }
 } 

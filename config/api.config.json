@@ -9,7 +9,6 @@
     },
     "headers": {
         "contentType": "application/x-www-form-urlencoded",
-        "authorization": "Basic YWNjb3VudC1udW1iZXI6NGQ3ZmU4ZTQtZGY4Zi00Zjg1LTg0YjYtNGI5YjgxMjhlNDE1",
         "apiVersion": "v6.5.8",
         "subscriptionKey": "0"
     },

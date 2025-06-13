@@ -8,32 +8,25 @@ export interface TokenRequest {
 
 export interface TokenResponse {
     access_token: string;
-    expires_in: number;
-    refresh_expires_in: number;
-    refresh_token: string;
     token_type: string;
-    session_state: string;
-    scope: string;
+    expires_in: number;
 }
 
 export interface LoanApplicationRequest {
-    grossIncome: number;
-    netIncome: number;
-    livingExpenses: number;
-    payDay: string;
-    loanReason: {
-        id: string;
-        name: string;
-        code: string;
-    };
+    income: number;
+    expenses: number;
+    payDay: number;
+    loanAmount: number;
+    term: number;
 }
 
 export interface LoanApplicationResponse {
-    id: string;
-    status: string;
-    createdAt: string;
-    updatedAt: string;
-    // Add other response fields as needed
+    status: number;
+    data: {
+        applicationId: string;
+        status: string;
+        error?: string;
+    };
 }
 
 export interface ApiConfig {

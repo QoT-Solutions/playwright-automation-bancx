@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  timeout: 30000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -22,11 +23,14 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', { open: 'never' }],
+    ['list']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://your-app-url.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -34,19 +38,48 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // API Testing project - no browser needed
+    {
+      name: 'api',
+      testMatch: /.*api\/.*.spec.ts/,
+      use: {
+        // Disable browser for API tests
+        browserName: undefined,
+        // Detailed API reporting
+        trace: 'on',
+      },
+    },
+    
+    // UI Testing projects with different browsers
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      testMatch: /.*ui\/.*.spec.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        trace: 'on-first-retry',
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+      },
     },
-
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      testMatch: /.*ui\/.*.spec.ts/,
+      use: {
+        ...devices['Desktop Firefox'],
+        trace: 'on-first-retry',
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+      },
     },
-
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      testMatch: /.*ui\/.*.spec.ts/,
+      use: {
+        ...devices['Desktop Safari'],
+        trace: 'on-first-retry',
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+      },
     },
 
     /* Test against mobile viewports. */

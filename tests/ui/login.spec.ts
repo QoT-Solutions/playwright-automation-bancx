@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage';
-import { ConfigManager } from '../utils/config';
+import { LoginPage } from '../../pages/loginPage';
+import { ConfigManager } from '../../utils/config';
 
 test.describe('Login Tests', () => {
     let loginPage: LoginPage;
