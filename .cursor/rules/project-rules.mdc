@@ -1,0 +1,113 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Project Structure
+playwright-framework/
+│
+├── tests/                         # Test cases
+│   ├── ui/                        # UI Test cases
+│   │   ├── home.spec.ts
+│   │   └── login.spec.ts
+│   └── api/                       # Optional: For API tests
+│       └── user-api.spec.ts
+│
+├── pages/                         # Page Object Model classes
+│   ├── basePage.ts                # Base page with common utilities
+│   ├── loginPage.ts
+│   └── homePage.ts
+│
+├── locators/                      # Organized selectors (optional enhancement)
+│   ├── loginPage.locators.ts
+│   └── homePage.locators.ts
+│
+├── testsuite/                     # Test suite aggregator
+│   └── ui.suite.ts
+│
+├── fixtures/                      # Custom fixtures and test hooks
+│   └── base.fixture.ts
+│
+├── utils/                         # Utility functions/helpers
+│   ├── logger.ts
+│   └── config.ts
+│
+├── reports/                       # Playwright test reports
+│
+├── test-results/                 # Test results from Playwright runs
+│
+├── playwright.config.ts          # Playwright configuration
+├── tsconfig.json                 # TypeScript config
+├── package.json                  # Node.js dependencies
+└── README.md                     # Project documentation
+
+Best Practices Summary
+Area	Best Practice
+Design Pattern	Use Page Object Model for UI abstraction
+Structure	Use modular, layered folder structure
+Locators	Use Playwright's locator engine instead of hardcoded selectors
+Reporting	Use built-in HTML or Allure for detailed reporting
+CI/CD	Integrate npx playwright test in CI pipelines (GitHub Actions, Jenkins, etc)
+Test Naming	Use descriptive names for test cases and group with test.describe
+Retry/Timeout	Set global timeouts and retries in config
+Maintenance	Use separate locators/ folder if locator maintenance becomes complex
+
+🎯 CursorAI Rules for Playwright + TypeScript Test Automation
+✅ General Best Practices
+Use async/await syntax consistently for all Playwright operations.
+
+Use descriptive and meaningful test names that explain the purpose and expected outcome.
+
+Follow the Arrange-Act-Assert (AAA) structure in test methods.
+
+Each test should verify a single behavior or outcome.
+
+Use selectors that are stable and robust (e.g., data-testid), not brittle selectors like CSS position.
+
+Avoid hardcoded waits; use Playwright’s built-in expect and waitFor utilities.
+
+📁 Project Structure & Organization
+Organize tests by feature/module (e.g., /tests/login.spec.ts, /tests/dashboard.spec.ts).
+
+Use the @playwright/test test runner with fixtures for setup/teardown logic.
+
+Place reusable functions and components in a utils or helpers directory.
+
+Separate test data from test logic; store data in JSON or TypeScript constants.
+
+Group related tests using test.describe() for clarity and logical grouping.
+
+📘 Page Object Model (POM)
+Implement Page Object Model to encapsulate UI logic and selectors.
+
+Each page object should expose high-level methods (e.g., login(username, password)), not low-level selectors.
+
+Do not use page objects inside page objects — prefer composition via services or helper methods.
+
+Page Object methods should return meaningful results or throw errors, not void.
+
+🧪 Test Runner & Execution
+Use Playwright Test’s fixtures (test.use() and test.beforeEach()) for browser setup.
+
+Parallelize tests with test.parallel() where possible for faster execution.
+
+Tag tests using .skip(), .only(), and .fixme() for temporary control and debugging.
+
+Configure retries and timeouts in playwright.config.ts instead of inside test files.
+
+🧼 Clean Code & Maintainability
+Avoid duplicating selectors and logic — reuse page object methods or utilities.
+
+Use TypeScript features such as enums and interfaces for test data consistency.
+
+Avoid using magic strings — define constants where appropriate.
+
+Keep test files under 200 lines; break into smaller suites if needed.
+
+📊 Reporting & Debugging
+Enable HTML and trace reports in playwright.config.ts for rich debugging.
+
+Use test.info().attach() to capture logs, screenshots, and traces for failing tests.
+
+
+Always log high-level test flow to the console for easier CI/CD debugging.
