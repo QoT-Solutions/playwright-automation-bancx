@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import { ConfigManager } from '../utils/config';
 
 export class LoginPage {
     private page: Page;
@@ -15,7 +16,7 @@ export class LoginPage {
 
     // Actions
     async navigateToLoginPage() {
-        await this.page.goto('https://dt004-customer-portal-avbob.aro1.radixcloud.software/');
+        await this.page.goto(ConfigManager.getBaseUrl());
     }
 
     async login(username: string, password: string) {

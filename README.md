@@ -13,6 +13,13 @@ playwright-automation-bancX/
 ├── pages/                         # Page Object Model classes
 │   └── loginPage.ts              # Login page object
 │
+├── config/                        # Configuration files
+│   ├── config.json               # Application configuration
+│   └── credentials.json          # Test credentials
+│
+├── utils/                         # Utility functions
+│   └── config.ts                 # Configuration manager
+│
 ├── playwright.config.ts          # Playwright configuration
 ├── package.json                  # Node.js dependencies
 └── README.md                     # Project documentation
@@ -30,6 +37,15 @@ playwright-automation-bancX/
 ```bash
 npm install
 ```
+
+## Configuration
+
+The project uses JSON configuration files for managing test data and application settings:
+
+1. `config/config.json`: Contains application settings like base URL and timeouts
+2. `config/credentials.json`: Contains test credentials for valid and invalid users
+
+To modify the test environment or credentials, update the respective JSON files.
 
 ## Running Tests
 
@@ -65,6 +81,15 @@ The login tests are implemented using decision table testing technique with the 
 ## Page Object Model
 
 The framework uses the Page Object Model design pattern to maintain the test code. The `LoginPage` class encapsulates all the login page-specific locators and actions.
+
+## Configuration Management
+
+The framework includes a `ConfigManager` utility class that handles:
+- Loading and caching configuration files
+- Providing access to application settings
+- Managing test credentials
+
+This ensures that sensitive data is kept separate from the test code and makes it easy to modify test data without changing the code.
 
 ## Configuration
 
