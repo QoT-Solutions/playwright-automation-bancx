@@ -29,10 +29,16 @@ playwright-automation-bancX/
 
 - Node.js (v14 or higher)
 - npm (Node Package Manager)
+- Git
 
 ## Installation
 
-1. Clone the repository
+1. Clone the repository:
+```bash
+git clone https://github.com/QoT-Solutions/playwright-automation-bancx.git
+cd playwright-automation-bancx
+```
+
 2. Install dependencies:
 ```bash
 npm install
@@ -91,11 +97,38 @@ The framework includes a `ConfigManager` utility class that handles:
 
 This ensures that sensitive data is kept separate from the test code and makes it easy to modify test data without changing the code.
 
+## Git Workflow
+
+### Making Changes
+
+1. Add your changes to the staging area:
+```bash
+git add .
+```
+
+2. Commit your changes with a descriptive message:
+```bash
+git commit -m "Your descriptive commit message"
+```
+
+3. Push your changes to the remote repository:
+```bash
+git push origin master
+```
+
+### Best Practices
+
+- Write clear, descriptive commit messages
+- Keep commits focused and atomic
+- Pull latest changes before making new changes
+- Create feature branches for major changes
+- Review changes before committing
+
+### Repository Information
+
+- Repository URL: https://github.com/QoT-Solutions/playwright-automation-bancx.git
+- Main branch: master
+
 ## Configuration
 
-The Playwright configuration can be found in `playwright.config.ts`. You can modify the following settings:
-- Browser selection
-- Test timeouts
-- Viewport size
-- Test retries
-- Screenshot and video capture settings 
+The Playwright configuration can be found in `
