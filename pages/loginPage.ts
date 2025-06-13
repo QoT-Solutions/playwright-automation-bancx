@@ -11,7 +11,7 @@ export class LoginPage {
     // Locators
     private usernameInput = 'input[name="username"]';
     private passwordInput = 'input[name="password"]';
-    private loginButton = 'button[type="submit"]';
+    private loginButton = '*[type="submit"]';
     private errorMessage = '.error-message';
 
     // Actions

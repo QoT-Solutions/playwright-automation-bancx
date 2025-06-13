@@ -1,0 +1,34 @@
+{
+    "baseUrls": {
+        "sso": "https://sso-dt004.aro1.radixcloud.software",
+        "api": "https://api-backend-dt004.aro1.radixcloud.software"
+    },
+    "endpoints": {
+        "token": "/auth/realms/dt004/protocol/openid-connect/token",
+        "loanApplication": "/application-assembly/api/v3/customers/{customerId}/loanApplications"
+    },
+    "headers": {
+        "contentType": "application/x-www-form-urlencoded",
+        "authorization": "Basic YWNjb3VudC1udW1iZXI6NGQ3ZmU4ZTQtZGY4Zi00Zjg1LTg0YjYtNGI5YjgxMjhlNDE1",
+        "apiVersion": "v6.5.8",
+        "subscriptionKey": "0"
+    },
+    "credentials": {
+        "username": "lungelo.shabangu",
+        "password": "3zzTkaAUNsiVSw9"
+    },
+    "testData": {
+        "customerId": "2900074",
+        "loanApplication": {
+            "grossIncome": 0,
+            "netIncome": 2000000,
+            "livingExpenses": 1500000,
+            "payDay": "31",
+            "loanReason": {
+                "id": "1001",
+                "name": "Reason 1",
+                "code": "reason-1"
+            }
+        }
+    }
+} 
